@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.tituloUnju {
+	color:rgba(0,88,92,255);
+	font-size: 7em;
+	font-weight: bold;
+	text-align: left;
+}
+.eslogan{
+	color:rgba(0,88,92,255);
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+}
+header{
+	background-color: gray;
+}
+.menu{
+	background-color: rgba(239,218,163,255);
+}
+.principal{
+	font-weight: bold;
+	text-align: left;
+}
+aside{
+	color: white;
+	background-color: rgba(121,188,195,255);
+}
+.pie{
+	color: white;
+	background-color: gray;
+}
+footer{
+	text-align: center;
+}
