@@ -5,15 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" th:href="@{/css/estilos.css}">
   </head>
   <body>
   	<header>
-  		<div class="row">
-  			<div class="col-3"><img th:src="@{/image/logo.png}" class="img-thumbnail" alt=""></div>
-  			<div class="col-6">Universidad Nacional de Jujuy</div>
-  			<div class="col-3">Flamman Tva Hoc Foco Accende</div>
-  		</div>
+	  		<div class="row">
+	  			<div class="col-3"><img th:src="@{/image/logo.png}" class="img-thumbnail" alt=""></div>
+	  			<div class="col-6"><h1 class="tituloUnju">Universidad Nacional de Jujuy</h1></div>
+	  			<div class="col-3 d-flex align-items-end"><h3 class="eslogan">Flamman Tva Hoc Foco Accende</h3></div>
+	  		</div>
   	</header>
+  	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	  <div class="container-fluid menu">
+		    <div class="collapse navbar-collapse" id="navbarNav">
+			      <ul class="navbar-nav">
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">Inicio</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">Acerca de</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">Carreras</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">Noticias</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">Contacto</a>
+				        </li>
+			      </ul>
+		    </div>
+	  </div>
+	</nav>
+	<div class="container principal">
+		<div class="row">
+			<aside class="col-2">
+				<h3>Enlaces Relacionados</h3>
+				<ul>
+                    <li><a href="https://www.fi.unju.edu.ar/">Facultad de Ingenieria</a></li>
+                    <li><a href="https://www.fhycs.unju.edu.ar/">Facultad de Humanidades</a></li>
+                    <li><a href="https://www.fce.unju.edu.ar/">Facultad de Ciencias Economicas</a></li>
+                </ul>
+			</aside>
+			<main class="col-10">
+				<section>
+					<h2>UNJU</h2>
+					<p>La Universidad Nacional de Jujuy (UNJu) es una institución pública de educación superior ubicada en la provincia de Jujuy, Argentina. Fundada el 13 de febrero de 1973, la UNJu se destaca por su compromiso con la formación académica y la investigación en diversas áreas del conocimiento.
+
+					   La universidad cuenta con varias facultades, entre las que se incluyen la Facultad de Ingeniería, la Facultad de Humanidades y Ciencias Sociales, la Facultad de Ciencias Agrarias y la Facultad de Ciencias Económicas. Ofrece una amplia gama de carreras de grado y posgrado, abarcando disciplinas como ingeniería, ciencias sociales, ciencias económicas, agronomía, y más.
+
+					   Además, la UNJu promueve la investigación científica y tecnológica a través de numerosos centros e institutos de investigación. La universidad también juega un papel importante en la extensión universitaria, vinculando sus actividades académicas y de investigación con las necesidades de la comunidad local y regional.
+
+					   La UNJu se destaca por su enfoque en la preservación del medio ambiente y el desarrollo sostenible, temas de particular relevancia en la región de Jujuy. Con un fuerte compromiso social y una perspectiva inclusiva, la universidad busca contribuir al desarrollo integral de la sociedad jujeña y del noroeste argentino.</p>
+				</section>
+				<section>
+					<h2>Noticias</h2>
+					<h3>Luego de la reunión con autoridades nacionales el CIN emitió un comunicado</h3>
+					<p>El Comité Ejecutivo ampliado del Consejo Interuniversitario Nacional (CIN), se reunió con el Secretario de Educación, Carlos Torrendell y el subsecretario de Políticas Universitarias, Alejandro Álvarez para retomar la agenda de trabajo en torno a la actualización del presupuesto universitario 2024.</p>
+					<h3>Invitan al conversatorio "Hospitalidad en la Experiencia del Cliente"</h3>
+					<p>La Coordinación de la Carrera de la Licenciatura en Turismo de la Universidad Nacional de Jujuy, junto a las Cátedras de la Expansión El Carmen invitaron a las personas interesadas a participar del Conversatorio "Hospitalidad en la Experiencia del Cliente", el próximo 29 de mayo en la sede El Carmen en Calle Coronel Arias esq. Av. 9 de Julio.</p>
+					<h3>Se encuentran abiertas las inscripciones para el Curso de Actualización en Agricultura Sustentable</h3>
+					<p>A partir del 13 de junio se desarrollará el Curso de Actualización en Agricultura Sustentable, con el objetivo de acercar a las personas interesadas herramientas e información actualizada para avanzar en tipos de producción que no dañen los suelos ni malgasten recursos esenciales como el agua.</p>
+				</section>
+			</main>
+		</div>
+	</div>
+	<div class="container pie">
+			<footer class="row">
+				<div class="col-4">
+					<h4>Información de contacto</h4>
+					<p>E-mail: consultas@unju.edu.ar
+
+				   	   Teléfono: (0388) 4244196 / 191 / 107
+						
+					   Dirección:Av.Bolivia 1239
+						
+					   S.S. de Jujuy - Argentina</p>
+				</div>
+				<div class="col-4">
+					<h4>Redes sociales</h4>
+					<div class="social">
+					<a href="https://www.facebook.com/universidadnacionaldejujuy/"><img alt="" th:src="@{/image/facebook.svg}"></a>
+					</div>
+					<div class="social">
+						<a href="https://x.com/prensaunju?lang=es"><img alt="" th:src="@{/image/twitter.svg}"></a>
+					</div>
+					<div class="social">
+						<a href="https://tv.unju.edu.ar/"><img alt="" th:src="@{/image/youtube.svg}"></a>
+					</div>
+				</div>
+				<div class="col-4">
+					<h4>Derechos de autor</h4>
+					<p>Arteaga Matias Emanuel</p>
+				</div>
+			</footer>
+	</div>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
   </body>
 </html>
