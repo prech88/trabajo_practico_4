@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head th:fragment="head">
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title data-th-text="${titulo}"></title>
+	    <link th:rel="stylesheet" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	    <link th:rel="stylesheet" data-th-href="@{/css/estilos.css}">
+    </head>
+	<body>
+		<header th:fragment="header">
+	  		<div class="row">
+	  			<div class="col-3"><img th:src="@{/image/logo.png}" class="img-thumbnail" alt=""></div>
+	  			<div class="col-6"><h1 class="tituloUnju">Universidad Nacional de Jujuy</h1></div>
+	  			<div class="col-3 d-flex align-items-end"><h3 class="eslogan">Flamman Tva Hoc Foco Accende</h3></div>
+	  		</div>
+	  		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			  <div class="container-fluid menu">
+				    <div class="collapse navbar-collapse" id="navbarNav">
+					      <ul class="navbar-nav">
+						        <li class="nav-item">
+						          <a class="nav-link" href="#">Inicio</a>
+						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link" href="#">Acerca de</a>
+						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link" href="#">Carreras</a>
+						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link" href="#">Noticias</a>
+						        </li>
+						        <li class="nav-item">
+						          <a class="nav-link" href="#">Contacto</a>
+						        </li>
+					      </ul>
+				    </div>
+			  </div>
+			</nav>
+  	    </header>
+	</body>
+</html>

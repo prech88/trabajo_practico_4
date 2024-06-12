@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head data-th-replace="~{/layouts/header :: head}"></head>
+	<body>
+		   <footer th:fragment="footer" class="row">
+				<div class="col-4">
+					<h4>Información de contacto</h4>
+					<p>E-mail: consultas@unju.edu.ar
+
+				   	   Teléfono: (0388) 4244196 / 191 / 107
+						
+					   Dirección:Av.Bolivia 1239
+						
+					   S.S. de Jujuy - Argentina</p>
+				</div>
+				<div class="col-4">
+					<h4>Redes sociales</h4>
+					<div class="social">
+					<a href="https://www.facebook.com/universidadnacionaldejujuy/"><img alt="" th:src="@{/image/facebook.svg}"></a>
+					</div>
+					<div class="social">
+						<a href="https://x.com/prensaunju?lang=es"><img alt="" th:src="@{/image/twitter.svg}"></a>
+					</div>
+					<div class="social">
+						<a href="https://tv.unju.edu.ar/"><img alt="" th:src="@{/image/youtube.svg}"></a>
+					</div>
+				</div>
+				<div class="col-4">
+					<h4>Derechos de autor</h4>
+					<p>Arteaga Matias Emanuel</p>
+				</div>
+			</footer>
+	</body>
+</html>
