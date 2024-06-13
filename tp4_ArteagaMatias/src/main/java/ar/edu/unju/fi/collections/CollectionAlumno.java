@@ -43,13 +43,15 @@ public class CollectionAlumno {
 	}
 	
 	public static void modificarAlumno(Alumno alumno) {
+		int dni = alumno.getDni();
 		for (Alumno alu : alumnos) {
-			if (alu.getDni() == alumno.getDni()) {
+			if (alu.getDni() == dni) {
 				alu.setNombre(alumno.getNombre());
 				alu.setApellido(alumno.getApellido());
 				alu.setEmail(alumno.getEmail());
 				alu.setTelefono(alumno.getTelefono());
 				alu.setDomicilio(alumno.getDomicilio());
+				alu.setLu(alumno.getLu());
 			}
 		}
 	}
