@@ -42,11 +42,12 @@ public class CollectionDocente {
 	}
 	
 	public static void modificarDocente(Docente docente) {
-		for (Docente doc : docentes) {
-			if (doc.getLegajo() == docente.getLegajo()) {
-				doc.setNombre(docente.getNombre());
-				doc.setApellido(docente.getApellido());
-				doc.setTelefono(docente.getTelefono());
+		int buscado = docente.getLegajo();
+		for (Docente docen : docentes) {
+			if (docen.getLegajo()==buscado) {
+				docen.setNombre(docente.getNombre());
+				docen.setApellido(docente.getApellido());
+				docen.setTelefono(docente.getTelefono());
 			}
 		}
 	}
