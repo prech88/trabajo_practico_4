@@ -18,7 +18,7 @@ public class CollectionCarrera {
 	public static void cargarCarreras(List<Carrera> carreras) {
 		carreras.add(new Carrera(1, "Analista Programador Univversitario", (byte)3, true));
 		carreras.add(new Carrera(2, "Analista de sistemas", (byte)5, true));
-		carreras.add(new Carrera(2, "Programacion en video juegos", (byte)5, false));
+		carreras.add(new Carrera(3, "Programacion en video juegos", (byte)5, false));
 	}
 	
 	public static List<Carrera> getCarreras() {
