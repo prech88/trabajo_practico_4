@@ -1,12 +1,18 @@
 package ar.edu.unju.fi.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Materia {
 	private Integer codigo;
 	private String nombre;
 	private String curso;
 	private Byte cantHoras;
 	private Boolean modalidad;
+	@Autowired
 	private Docente docente;
+	@Autowired
 	private Carrera carrera;
 	
 	public Materia() {
