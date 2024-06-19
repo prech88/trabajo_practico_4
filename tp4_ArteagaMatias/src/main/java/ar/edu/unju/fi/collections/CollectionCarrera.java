@@ -28,8 +28,9 @@ public class CollectionCarrera {
 		return carreras;
 	}
 	
-	public static void agregarCarrera(Carrera carrera) {
-		carreras.add(carrera);
+	public static boolean agregarCarrera(Carrera carrera) {
+		boolean exito = carreras.add(carrera)?true:false;
+		return exito;
 	}
 	
 	public static void elminarCarrera(int codigoCarrera) {
