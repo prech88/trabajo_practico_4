@@ -1,4 +1,4 @@
-package ar.edu.unju.fi;
+package ar.edu.unju.fi.dto;
 
 import org.springframework.stereotype.Component;
 
