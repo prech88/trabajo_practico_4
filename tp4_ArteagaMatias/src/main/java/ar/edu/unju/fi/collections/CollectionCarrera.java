@@ -44,7 +44,7 @@ public class CollectionCarrera {
 	public static void modificarCarrera(Carrera carrera) {
 		for (Carrera carre : carreras) {
 			if (carre.getCodigo() == carrera.getCodigo()) {
-				carre.setCantAños(carrera.getCantAños());
+				carre.setCantAnios(carrera.getCantAnios());
 				carre.setEstado(carrera.getEstado());
 				carre.setNombre(carrera.getNombre());
 			}
