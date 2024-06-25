@@ -21,7 +21,7 @@
 			    <tr data-th-each="car : ${carreras}">
 			      <th data-th-text="${car.codigo}"></th>
 			      <td data-th-text="${car.nombre}"></td>
-			      <td data-th-text="${car.cantAños}+' años'"></td>
+			      <td data-th-text="${car.cantAnios}+' años'"></td>
 			      <td>
 			      	<span th:if="${car.estado}">Activa</span>
 			      	<span th:if="${!car.estado}">Inactiva</span>
