@@ -3,7 +3,7 @@ package ar.edu.unju.fi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "ar.edu.unju.fi")
 public class Tp4ArteagaMatiasApplication {
 
 	public static void main(String[] args) {
