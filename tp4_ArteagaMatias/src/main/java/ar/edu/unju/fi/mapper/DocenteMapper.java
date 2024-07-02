@@ -12,9 +12,9 @@ import ar.edu.unju.fi.model.Docente;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 @Component
-
 public interface DocenteMapper {
-DocenteDto toDocenteDto(Docente docente);
+
+	DocenteDto toDocenteDto(Docente docente);
 	
 	@InheritInverseConfiguration
 	Docente toDocente(DocenteDto docenteDto);
