@@ -1,12 +1,9 @@
-package ar.edu.unju.fi.model;
+package ar.edu.unju.fi.dto;
 
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Entity
-@Table(name = "alumnos")
-public class Alumno {
-	@Id
+public class AlumnoDTO {
 	private Integer dni;
 	private String nombre;
 	private String apellido;
