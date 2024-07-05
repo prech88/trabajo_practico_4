@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head data-th-replace="~{/layouts/header :: head}"></head>
-	<body>
-		   <footer th:fragment="footer" class="row">
-				<div class="col-4">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<footer th:fragment="footer"
+		class="text-center text-lg-start mt-auto py-3">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4 mb-3">
 					<h4>Información de contacto</h4>
-					<p>E-mail: consultas@unju.edu.ar
-
-				   	   Teléfono: (0388) 4244196 / 191 / 107
-						
-					   Dirección:Av.Bolivia 1239
-						
-					   S.S. de Jujuy - Argentina</p>
+					<p>
+						E-mail: consultas@unju.edu.ar<br> Teléfono: (0388) 4244196 /
+						191 / 107<br> Dirección: Av.Bolivia 1239<br> S.S. de
+						Jujuy - Argentina
+					</p>
 				</div>
-				<div class="col-4">
+				<div class="col-md-4 mb-3">
 					<h4>Redes sociales</h4>
-					<div class="social">
-					<a href="https://www.facebook.com/universidadnacionaldejujuy/"><img alt="" th:src="@{/image/facebook.svg}"></a>
-					</div>
-					<div class="social">
-						<a href="https://x.com/prensaunju?lang=es"><img alt="" th:src="@{/image/twitter.svg}"></a>
-					</div>
-					<div class="social">
-						<a href="https://tv.unju.edu.ar/"><img alt="" th:src="@{/image/youtube.svg}"></a>
+					<div class="social d-flex justify-content-center">
+						<a href="https://www.facebook.com/universidadnacionaldejujuy/">
+							<img alt="Facebook" th:src="@{/image/facebook.svg}" class="mx-2">
+						</a> <a href="https://x.com/prensaunju?lang=es"> <img
+							alt="Twitter" th:src="@{/image/twitter.svg}" class="mx-2">
+						</a> <a href="https://tv.unju.edu.ar/"> <img alt="YouTube"
+							th:src="@{/image/youtube.svg}" class="mx-2">
+						</a>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-md-4 mb-3">
 					<h4>Derechos de autor</h4>
 					<p>Arteaga Matias Emanuel</p>
+					<p>Campos Leo</p>
 				</div>
-			</footer>
-	</body>
+			</div>
+		</div>
+	</footer>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>
