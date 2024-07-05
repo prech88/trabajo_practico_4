@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -29,6 +30,6 @@ public class Carrera {
 	private String nombre;
 	private Byte cantAnios;
 	private Boolean estado;
-	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "carrera", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Materia> materias;
 }

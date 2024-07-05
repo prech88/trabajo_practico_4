@@ -22,7 +22,7 @@
 			  </thead>
 			  <tbody>
 			    <tr data-th-each="mat : ${materias}">
-			      <th data-th-text="${mat.codigo}"></th>
+			      <th data-th-text="${mat.codigoMateria}"></th>
 			      <td data-th-text="${mat.nombre}"></td>
 			      <td data-th-text="${mat.curso}"></td>
 			      <td data-th-text="${mat.cantHoras}"></td>
@@ -33,8 +33,8 @@
 			      <td data-th-text="${mat.docente.nombre}+' '+${mat.docente.apellido}"></td>
 			      <td data-th-text="${mat.carrera.nombre}"></td>
 			      <td>
-			      	<a class="btn btn-warning" data-th-href="@{/materia/modificar/}+${mat.codigo}" role="button">Editar</a>
-			      	<a class="btn btn-danger" data-th-href="@{/materia/eliminar/}+${mat.codigo}" role="button">Eliminar</a>
+			      	<a class="btn btn-warning" data-th-href="@{/materia/modificar/}+${mat.codigoMateria}" role="button">Editar</a>
+			      	<a class="btn btn-danger" data-th-href="@{/materia/eliminar/}+${mat.codigoMateria}" role="button">Eliminar</a>
 			      </td>
 			    </tr>
 			  </tbody>

@@ -2,6 +2,7 @@ package ar.edu.unju.fi.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,7 +25,7 @@ import lombok.ToString;
 @Table(name = "materias")
 public class Materia {
 	@Id
-	private Integer codigo;
+	private Integer codigoMateria;
 	private String nombre;
 	private String curso;
 	private Byte cantHoras;

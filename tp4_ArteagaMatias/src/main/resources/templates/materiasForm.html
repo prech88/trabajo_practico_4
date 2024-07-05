@@ -11,9 +11,9 @@
 			<div class="row">
 				<form data-th-action="${edicion}?@{/materia/modificar} : @{/materia/guardar}" th:object="${materia}" method="post">
 				  <div class="mb-3">
-				    <label for="codigo" class="form-label">Codigo</label>
-				    <input type="number" class="form-control" id="codigo" th:field="*{codigo}" th:disabled="${edicion}?true:false">
-				    <input type="hidden" class="form-control" id="codigo" th:field="*{codigo}" th:if="${edicion}">
+				    <label for="codigoMateria" class="form-label">Codigo</label>
+				    <input type="number" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:disabled="${edicion}?true:false">
+				    <input type="hidden" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:if="${edicion}">
 				  </div>
 				  <div class="mb-3">
 				    <label for="nombre" class="form-label">Nombre</label>

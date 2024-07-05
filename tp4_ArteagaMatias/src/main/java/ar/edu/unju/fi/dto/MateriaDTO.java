@@ -15,7 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class MateriaDTO {
-	private Integer codigo;
+	private Integer codigoMateria;
 	private String nombre;
 	private String curso;
 	private Byte cantHoras;

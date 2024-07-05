@@ -15,8 +15,6 @@ import ar.edu.unju.fi.model.Materia;
 @Component
 public interface MateriaMapper {
 	
-	@Mapping(target = "carrera", source = "carrera")
-    @Mapping(target = "docente", source = "docente")
 	MateriaDTO toMateriaDTO(Materia materia);
 	
 	@InheritInverseConfiguration

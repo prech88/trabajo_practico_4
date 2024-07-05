@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.dto.MateriaDTO;
 import ar.edu.unju.fi.mapper.MateriaMapper;
 import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.IMateriaService;
-
+@Service
 public class MateriaServiceImpl implements IMateriaService{
 	
 	@Autowired
