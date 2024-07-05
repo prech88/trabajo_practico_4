@@ -20,7 +20,7 @@ public interface MateriaMapper {
 	MateriaDTO toMateriaDTO(Materia materia);
 	
 	@InheritInverseConfiguration
-	Materia materia(MateriaDTO materiaDTO);
+	Materia toMateria(MateriaDTO materiaDTO);
 	
 	List<MateriaDTO> toMateriasDTO(List<Materia> materias);
 	
