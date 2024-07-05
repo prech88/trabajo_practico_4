@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head data-th-replace="~{/layouts/header :: head}"></head>
-	<body>
-		<header data-th-replace="~{/layouts/header :: header}"></header>
-		
-		<div class="container">
-			<a class="btn btn-primary" data-th-href="@{/alumno/alta}" role="button">Nuevo Alumno</a>
-		</div>
-		<div class="container">
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">Dni</th>
-			      <th scope="col">Nombre</th>
-			      <th scope="col">Apellido</th>
-			      <th scope="col">E-mail</th>
-			      <th scope="col">Telefono</th>
-			      <th scope="col">Fecha de Nacimiento</th>
-			      <th scope="col">Domicilio</th>
-			      <th scope="col">L.U.</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr data-th-each="alu : ${alumnos}">
-			      <th data-th-text="${alu.dni}"></th>
-			      <td data-th-text="${alu.nombre}"></td>
-			      <td data-th-text="${alu.apellido}"></td>
-			      <td data-th-text="${alu.email}"></td>
-			      <td data-th-text="${alu.telefono}"></td>
-			      <td data-th-text="${alu.fechaNac}"></td>
-			      <td data-th-text="${alu.domicilio}"></td>
-			      <td data-th-text="${alu.lu}"></td>
-			      <td>
-			      	<a class="btn btn-warning" data-th-href="@{/alumno/modificar/}+${alu.dni}" role="button">Editar</a>
-			      	<a class="btn btn-danger" data-th-href="@{/alumno/eliminar/}+${alu.dni}" role="button">Eliminar</a>
-			      </td>
-			    </tr>
-			  </tbody>
-			</table>
-		</div>
-		
-		<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>v
-	</body>
+  <head data-th-replace="~{/layouts/header :: head}"></head>
+  <body>
+    <header data-th-replace="~{/layouts/header :: header}"></header>
+
+    <div class="container principal mt-4">
+      <div class="row mb-3">
+        <div class="col-12">
+          <a class="btn btn-primary" data-th-href="@{/alumno/alta}" role="button">Nuevo Alumno</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">DNI</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">L.U.</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-th-each="alu : ${alumnos}">
+                <th data-th-text="${alu.dni}"></th>
+                <td data-th-text="${alu.nombre}"></td>
+                <td data-th-text="${alu.apellido}"></td>
+                <td data-th-text="${alu.email}"></td>
+                <td data-th-text="${alu.telefono}"></td>
+                <td data-th-text="${alu.fechaNac}"></td>
+                <td data-th-text="${alu.domicilio}"></td>
+                <td data-th-text="${alu.lu}"></td>
+                <td>
+                  <a class="btn btn-warning" data-th-href="@{/alumno/modificar/}+${alu.dni}" role="button">Editar</a>
+                  <a class="btn btn-danger" data-th-href="@{/alumno/eliminar/}+${alu.dni}" role="button">Eliminar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  </body>
 </html>
