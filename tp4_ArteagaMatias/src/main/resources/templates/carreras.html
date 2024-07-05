@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head data-th-replace="~{/layouts/header :: head}"></head>
-	<body>
-		<header data-th-replace="~{/layouts/header :: header}"></header>
-		
-		<div class="container">
-			<a class="btn btn-primary" data-th-href="@{/carrera/alta}" role="button">Nueva Carrera</a>
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+
+	<div class="container principal mt-4">
+		<div class="d-flex justify-content-end mb-3">
+			<a class="btn btn-primary" data-th-href="@{/carrera/alta}"
+				role="button">Nueva Carrera</a>
 		</div>
-		<div class="container">
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">Codigo</th>
-			      <th scope="col">Nombre</th>
-			      <th scope="col">Duracion</th>
-			      <th scope="col">Estado</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr data-th-each="car : ${carreras}">
-			      <th data-th-text="${car.codigo}"></th>
-			      <td data-th-text="${car.nombre}"></td>
-			      <td data-th-text="${car.cantAnios}+' años'"></td>
-			      <td>
-			      	<span th:if="${car.estado}">Activa</span>
-			      	<span th:if="${!car.estado}">Inactiva</span>
-			      </td>
-			      <td>
-			      	<a class="btn btn-warning" data-th-href="@{/carrera/modificar/}+${car.codigo}" role="button">Editar</a>
-			      	<a class="btn btn-danger" data-th-href="@{/carrera/eliminar/}+${car.codigo}" role="button">Eliminar</a>
-			      </td>
-			    </tr>
-			  </tbody>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Duracion</th>
+						<th scope="col">Estado</th>
+						<th scope="col">Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="car : ${carreras}">
+						<th data-th-text="${car.codigo}"></th>
+						<td data-th-text="${car.nombre}"></td>
+						<td data-th-text="${car.cantAnios} + ' años'"></td>
+						<td><span th:if="${car.estado}">Activa</span> <span
+							th:if="${!car.estado}">Inactiva</span></td>
+						<td><a class="btn btn-warning btn-sm"
+							data-th-href="@{/carrera/modificar/} + ${car.codigo}"
+							role="button">Editar</a> <a class="btn btn-danger btn-sm"
+							data-th-href="@{/carrera/eliminar/} + ${car.codigo}"
+							role="button">Eliminar</a></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
-		
-		<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-		<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>v
-	</body>
+	</div>
+
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
 </html>
