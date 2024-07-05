@@ -29,7 +29,7 @@ private static List<Materia> materias = new ArrayList<Materia>();
 	public static void elminarMateria(int codigo) {
 		Iterator<Materia> iterator = materias.iterator();
 		while (iterator.hasNext()) {
-			if (iterator.next().getCodigo() == codigo) {
+			if (iterator.next().getCodigoMateria() == codigo) {
 				iterator.remove();
 			}
 		}
@@ -37,7 +37,7 @@ private static List<Materia> materias = new ArrayList<Materia>();
 	
 	public static void modificarMateria(Materia materia) {
 		for (Materia mat : materias) {
-			if (mat.getCodigo() == materia.getCodigo()) {
+			if (mat.getCodigoMateria() == materia.getCodigoMateria()) {
 				mat.setNombre(materia.getNombre());
 				mat.setCurso(materia.getCurso());
 				mat.setCantHoras(materia.getCantHoras());
@@ -49,7 +49,7 @@ private static List<Materia> materias = new ArrayList<Materia>();
 	}
 	
 	public static Materia buscarMateria(int codigo) {
-		Predicate<Materia> filterCodigo = m -> m.getCodigo() == codigo;
+		Predicate<Materia> filterCodigo = m -> m.getCodigoMateria() == codigo;
 		Optional<Materia> materia = materias.stream().filter(filterCodigo).findFirst();
         if (materia.isPresent()) {
             return materia.get();
