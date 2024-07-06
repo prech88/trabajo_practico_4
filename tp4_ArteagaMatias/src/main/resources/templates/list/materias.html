@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head data-th-replace="~{/layouts/header :: head}"></head>
+
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+
+	<div class="container principal mt-4">
+		<div class="row mb-3">
+			<div class="col-12">
+				<a class="btn btn-primary" data-th-href="@{/materia/alta}" role="button">Nueva Materia</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 mb-4" data-th-each="mat : ${materias}">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title" data-th-text="${mat.nombre}"></h5>
+						<p class="card-text"><strong>Código:</strong> <span data-th-text="${mat.codigoMateria}"></span>
+						</p>
+						<p class="card-text"><strong>Curso:</strong> <span data-th-text="${mat.curso}"></span></p>
+						<p class="card-text"><strong>Cantidad de Horas:</strong> <span
+								data-th-text="${mat.cantHoras}"></span></p>
+						<p class="card-text"><strong>Modalidad:</strong> <span th:if="${mat.modalidad}">Virtual</span>
+							<span th:if="${!mat.modalidad}">Presencial</span></p>
+						<p class="card-text"><strong>Docente:</strong> <span
+								data-th-text="${mat.docente.nombre} + ' ' + ${mat.docente.apellido}"></span></p>
+						<p class="card-text"><strong>Carrera:</strong> <span
+								data-th-text="${mat.carrera.nombre}"></span></p>
+						<a class="btn btn-warning" data-th-href="@{/materia/modificar/} + ${mat.codigoMateria}"
+							role="button">Editar</a>
+						<a class="btn btn-danger" data-th-href="@{/materia/eliminar/} + ${mat.codigoMateria}"
+							role="button">Eliminar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
