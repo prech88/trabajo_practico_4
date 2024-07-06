@@ -27,7 +27,7 @@ public class CarreraController {
 	public String getCarrerasPage(Model model) {
 		model.addAttribute("carreras", carreraService.findAll());
 		model.addAttribute("titulo", "Carreras");
-		return "carreras";
+		return "list/carreras";
 	}
 	
 	@GetMapping("/alta")
@@ -36,12 +36,12 @@ public class CarreraController {
 		model.addAttribute("titulo", "Nueva Carrera");
 		model.addAttribute("carrera", carreraDTO);
 		model.addAttribute("edicion", edicion);
-		return "carrerasForm";
+		return "forms/carrerasForm";
 	}
 	
 	@PostMapping("/guardar")
 	public ModelAndView guardarNuevvaCarrera(@ModelAttribute("carrera") CarreraDTO carreraDTO) {
-		ModelAndView modelView = new ModelAndView("carreras");
+		ModelAndView modelView = new ModelAndView("list/carreras");
 		carreraDTO.setEstado(true);
 		carreraService.saveCarreraDTO(carreraDTO);
 		modelView.addObject("carreras", carreraService.findAll());
@@ -56,7 +56,7 @@ public class CarreraController {
 		model.addAttribute("edicion", edicion);
 		model.addAttribute("carrera", carreraEncontrada);
 		model.addAttribute("titulo", "Modificar carrera");
-		return "carrerasForm";
+		return "forms/carrerasForm";
 	}
 	
 	@PostMapping("/modificar")

@@ -26,7 +26,7 @@ public class AlumnoController {
 	public String getAlumnoPage(Model model) {
 		model.addAttribute("alumnos", alumnoService.findAll());
 		model.addAttribute("titulo", "Alumnos");
-		return "alumnos";
+		return "list/alumnos";
 	}
 	
 	@GetMapping("/alta")
@@ -35,12 +35,12 @@ public class AlumnoController {
 		model.addAttribute("titulo", "Nuevo Alumno");
 		model.addAttribute("alumno", alumnoDTO);
 		model.addAttribute("edicion", edicion);
-		return "alumnosForm";
+		return "forms/alumnosForm";
 	}
 	
 	@PostMapping("/guardar")
 	public ModelAndView guardarNuevoAlumno(@ModelAttribute("alumno") AlumnoDTO alumnoDTO) {
-		ModelAndView modelView = new ModelAndView("alumnos");
+		ModelAndView modelView = new ModelAndView("list/alumnos");
 		alumnoService.saveAlumnoDTO(alumnoDTO);
 		modelView.addObject("alumnos", alumnoService.findAll());
 		return modelView;
@@ -54,7 +54,7 @@ public class AlumnoController {
 		model.addAttribute("edicion", edicion);
 		model.addAttribute("alumno", alumnoEncontrado);
 		model.addAttribute("titulo", "Modificar Alumno");
-		return "alumnosForm";
+		return "forms/alumnosForm";
 	}
 	
 	@PostMapping("/modificar")
