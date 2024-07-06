@@ -26,7 +26,7 @@ public class DocenteController {
 	public String getDocentePage(Model model) {
 		model.addAttribute("docentes", docenteService.findAll());
 		model.addAttribute("titulo", "Docentes");
-		return "docentes";
+		return "list/docentes";
 	}
 	
 	@GetMapping("/alta")
@@ -35,12 +35,12 @@ public class DocenteController {
 		model.addAttribute("titulo", "Nuevo Docente");
 		model.addAttribute("docente", docenteDto);
 		model.addAttribute("edicion", edicion);
-		return "docentesForm";
+		return "forms/docentesForm";
 	}
 	
 	@PostMapping("/guardar")
 	public ModelAndView guardarNuevoDocente(@ModelAttribute("docente") DocenteDto docenteDto) {
-		ModelAndView modelView = new ModelAndView("docentes");
+		ModelAndView modelView = new ModelAndView("list/docentes");
 		docenteService.saveDocenteDto(docenteDto);
 		modelView.addObject("docentes", docenteService.findAll());
 		return modelView;
@@ -54,7 +54,7 @@ public class DocenteController {
 		model.addAttribute("edicion", edicion);
 		model.addAttribute("docente", docenteEncontrado);
 		model.addAttribute("titulo", "Modificar Docente");
-		return "docentesForm";
+		return "forms/docentesForm";
 	}
 	
 	@PostMapping("/modificar")

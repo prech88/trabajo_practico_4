@@ -39,7 +39,7 @@ public class MateriaController {
 	public String getMateriaPage(Model model) {
 		model.addAttribute("materias", materiaService.findAll());
 		model.addAttribute("titulo", "Materias");
-		return "materias";
+		return "list/materias";
 	}
 	
 	@GetMapping("/alta")
@@ -50,7 +50,7 @@ public class MateriaController {
 		model.addAttribute("edicion", edicion);
 		model.addAttribute("docentes", docenteService.findAll());
 		model.addAttribute("carreras", carreraService.findAll());
-		return "materiasForm";
+		return "forms/materiasForm";
 	}
 	
 	@PostMapping("/guardar")
@@ -59,7 +59,7 @@ public class MateriaController {
 		carrera = carreraService.findById(materiaDTO.getCarrera().getCodigo());
 		materiaDTO.setDocente(docente);
 		materiaDTO.setCarrera(carrera);
-		ModelAndView modelView = new ModelAndView("materias");
+		ModelAndView modelView = new ModelAndView("list/materias");
 		materiaService.saveMateriaDTO(materiaDTO);
 		modelView.addObject("materias", materiaService.findAll());
 		return modelView;
@@ -75,7 +75,7 @@ public class MateriaController {
 		model.addAttribute("titulo", "Modificar Materia");
 		model.addAttribute("docentes", docenteService.findAll());
 		model.addAttribute("carreras", carreraService.findAll());
-		return "materiasForm";
+		return "forms/materiasForm";
 	}
 	
 	@PostMapping("/modificar")
