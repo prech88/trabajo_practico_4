@@ -3,6 +3,7 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.DocenteDto;
 import ar.edu.unju.fi.service.IDocenteService;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/docente")
@@ -39,10 +41,15 @@ public class DocenteController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarNuevoDocente(@ModelAttribute("docente") DocenteDto docenteDto) {
-		ModelAndView modelView = new ModelAndView("list/docentes");
-		docenteService.saveDocenteDto(docenteDto);
-		modelView.addObject("docentes", docenteService.findAll());
+	public ModelAndView guardarNuevoDocente(@Valid @ModelAttribute("docente") DocenteDto docenteDto, BindingResult result) {
+		ModelAndView modelView;
+		if (result.hasErrors()) {
+			modelView = new ModelAndView("forms/docentesForm");
+		} else {
+			modelView = new ModelAndView("list/docentes");
+			docenteService.saveDocenteDto(docenteDto);
+			modelView.addObject("docentes", docenteService.findAll());
+		}
 		return modelView;
 	}
 	
@@ -58,9 +65,14 @@ public class DocenteController {
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarDocente(@ModelAttribute("docente") DocenteDto docenteDto) {
-		docenteService.edit(docenteDto);
-		return "redirect:/docente/listado";
+	public String modificarDocente(@Valid @ModelAttribute("docente") DocenteDto docenteDto, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("edicion", true);
+			return "forms/docentesForm";
+		} else {
+			docenteService.edit(docenteDto);
+			return "redirect:/docente/listado";
+		}
 	}
 	
 	@GetMapping("/eliminar/{legajo}")
