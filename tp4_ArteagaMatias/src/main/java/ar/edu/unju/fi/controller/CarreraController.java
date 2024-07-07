@@ -3,11 +3,13 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
 import ar.edu.unju.fi.service.ICarreraService;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,11 +42,16 @@ public class CarreraController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarNuevvaCarrera(@ModelAttribute("carrera") CarreraDTO carreraDTO) {
-		ModelAndView modelView = new ModelAndView("list/carreras");
-		carreraDTO.setEstado(true);
-		carreraService.saveCarreraDTO(carreraDTO);
-		modelView.addObject("carreras", carreraService.findAll());
+	public ModelAndView guardarNuevvaCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO, BindingResult result) {
+		ModelAndView modelView;
+		if (result.hasErrors()) {
+			modelView = new ModelAndView("forms/carrerasForm");
+		} else {
+			modelView = new ModelAndView("list/carreras");
+			carreraDTO.setEstado(true);
+			carreraService.saveCarreraDTO(carreraDTO);
+			modelView.addObject("carreras", carreraService.findAll());
+		}
 		return modelView;
 	}
 	
@@ -60,9 +67,14 @@ public class CarreraController {
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarCarrera(@ModelAttribute("carrera") CarreraDTO carreraDTO) {
-		carreraService.edit(carreraDTO);
-		return "redirect:/carrera/listado";
+	public String modificarCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("edicion", true);
+            return "forms/carrerasForm";
+		} else {
+			carreraService.edit(carreraDTO);
+			return "redirect:/carrera/listado";
+		}
 	}
 	
 	@GetMapping("/eliminar/{codigo}")

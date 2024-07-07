@@ -20,13 +20,14 @@
 							th:field="*{codigo}" th:if="${edicion}">
 					</div>
 					<div class="mb-3">
-						<label for="nombre" class="form-label">Nombre</label> <input
-							type="text" class="form-control" id="nombre" th:field="*{nombre}">
+						<label for="nombre" class="form-label">Nombre</label>
+						<input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 					</div>
 					<div class="mb-3">
 						<label for="cantAnios" class="form-label">Cantidad de años</label>
-						<input type="number" class="form-control" id="cantAnios"
-							th:field="*{cantAnios}">
+						<input type="number" class="form-control" id="cantAnios"th:field="*{cantAnios}" th:classappend="${#fields.hasErrors('cantAnios')} ? 'is-invalid' : ''">
+						<p class="form-text text-danger" th:if="${#fields.hasErrors('cantAnios')}" th:errors="*{cantAnios}"></p>
 					</div>
 					<div class="mb-3" th:if="${edicion}">
 						<h5>Estado</h5>

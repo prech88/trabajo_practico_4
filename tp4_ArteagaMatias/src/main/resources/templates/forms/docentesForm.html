@@ -12,20 +12,20 @@
 					data-th-action="${edicion}?@{/docente/modificar} : @{/docente/guardar}"
 					th:object="${docente}" method="post">
 					<div class="mb-3">
-						<label for="legajo" class="form-label">Legajo</label> <input
-							type="number" class="form-control" id="legajo"
-							th:field="*{legajo}" th:disabled="${edicion}?true:false">
-						<input type="hidden" class="form-control" id="legajo"
-							th:field="*{legajo}" th:if="${edicion}">
+						<label for="legajo" class="form-label">Legajo</label>
+						<input type="number" class="form-control" id="legajo" th:field="*{legajo}" th:classappend="${#fields.hasErrors('legajo')} ? 'is-invalid' : ''" th:disabled="${edicion}?true:false">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></p>
+						<input type="hidden" class="form-control" id="legajo" th:field="*{legajo}" th:if="${edicion}">
 					</div>
 					<div class="mb-3">
-						<label for="nombre" class="form-label">Nombre</label> <input
-							type="text" class="form-control" id="nombre" th:field="*{nombre}">
+						<label for="nombre" class="form-label">Nombre</label>
+						<input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 					</div>
 					<div class="mb-3">
-						<label for="apellido" class="form-label">Apellido</label> <input
-							type="text" class="form-control" id="apellido"
-							th:field="*{apellido}">
+						<label for="apellido" class="form-label">Apellido</label>
+						<input type="text" class="form-control" id="apellido" th:field="*{apellido}" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></p>
 					</div>
 					<div class="mb-3">
 						<label for="telefono" class="form-label">Teléfono</label> <input
