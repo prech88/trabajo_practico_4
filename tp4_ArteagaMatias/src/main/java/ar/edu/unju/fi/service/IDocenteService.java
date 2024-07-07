@@ -14,4 +14,7 @@ List<DocenteDto> findAll();
 	void deleteByID(Integer codigo);
 	
 	void edit(DocenteDto DocenteDto);
+	
+    boolean tieneMateriasAsignadas(Integer legajo);
+
 }
