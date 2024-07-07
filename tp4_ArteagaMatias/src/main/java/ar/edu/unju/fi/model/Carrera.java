@@ -30,6 +30,6 @@ public class Carrera {
 	private String nombre;
 	private Byte cantAnios;
 	private Boolean estado;
-	@OneToMany(mappedBy = "carrera", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "carrera", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Materia> materias;
 }
