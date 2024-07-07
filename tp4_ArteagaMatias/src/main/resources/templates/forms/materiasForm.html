@@ -20,11 +20,13 @@
             </div>
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+			  <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+			  <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
             </div>
             <div class="mb-3">
               <label for="curso" class="form-label">Curso</label>
-              <input type="text" class="form-control" id="curso" th:field="*{curso}">
+              <input type="text" class="form-control" id="curso" th:field="*{curso}" th:classappend="${#fields.hasErrors('curso')} ? 'is-invalid' : ''">
+			  			  <p class="form-text text-danger" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></p>
             </div>
             <div class="mb-3">
               <label for="cantHoras" class="form-label">Cantidad de Horas</label>
