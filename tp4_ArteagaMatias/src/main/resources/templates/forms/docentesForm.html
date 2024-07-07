@@ -12,11 +12,10 @@
 					data-th-action="${edicion}?@{/docente/modificar} : @{/docente/guardar}"
 					th:object="${docente}" method="post">
 					<div class="mb-3">
-						<label for="legajo" class="form-label">Legajo</label> <input
-							type="number" class="form-control" id="legajo"
-							th:field="*{legajo}" th:disabled="${edicion}?true:false">
-						<input type="hidden" class="form-control" id="legajo"
-							th:field="*{legajo}" th:if="${edicion}">
+						<label for="legajo" class="form-label">Legajo</label>
+						<input type="number" class="form-control" id="legajo" th:field="*{legajo}" th:classappend="${#fields.hasErrors('legajo')} ? 'is-invalid' : ''" th:disabled="${edicion}?true:false">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></p>
+						<input type="hidden" class="form-control" id="legajo" th:field="*{legajo}" th:if="${edicion}">
 					</div>
 					<div class="mb-3">
 						<label for="nombre" class="form-label">Nombre</label>
