@@ -76,9 +76,15 @@ public class DocenteController {
 	}
 	
 	@GetMapping("/eliminar/{legajo}")
-	public String eliminarDocente(@PathVariable(value="legajo")int legajo) {
-		docenteService.deleteByID(legajo);
-		return "redirect:/docente/listado";
+	public String eliminarDocente(@PathVariable(value = "legajo") int legajo, Model model) {
+	    if (docenteService.tieneMateriasAsignadas(legajo)) {
+	        model.addAttribute("advertencia", true);
+	        model.addAttribute("docenteConMateria", docenteService.tieneMateriasAsignadas(legajo)); 
+	    } else {
+	        docenteService.deleteByID(legajo);
+	    }
+	    model.addAttribute("docentes", docenteService.findAll());
+	    return "list/docentes";
 	}
 	
 }
