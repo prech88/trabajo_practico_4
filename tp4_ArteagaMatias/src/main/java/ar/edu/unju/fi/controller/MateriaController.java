@@ -3,6 +3,7 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import ar.edu.unju.fi.dto.MateriaDTO;
 import ar.edu.unju.fi.service.ICarreraService;
 import ar.edu.unju.fi.service.IDocenteService;
 import ar.edu.unju.fi.service.IMateriaService;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/materia")
@@ -54,14 +56,21 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarNuevaMateria(@ModelAttribute("materia") MateriaDTO materiaDTO) {
+	public ModelAndView guardarNuevaMateria(@Valid @ModelAttribute("materia") MateriaDTO materiaDTO, BindingResult result, Model model) {
 		docente = docenteService.findById(materiaDTO.getDocente().getLegajo());
 		carrera = carreraService.findById(materiaDTO.getCarrera().getCodigo());
 		materiaDTO.setDocente(docente);
 		materiaDTO.setCarrera(carrera);
-		ModelAndView modelView = new ModelAndView("list/materias");
-		materiaService.saveMateriaDTO(materiaDTO);
-		modelView.addObject("materias", materiaService.findAll());
+		ModelAndView modelView;
+		if (result.hasErrors()) {
+			model.addAttribute("docentes", docenteService.findAll());
+			model.addAttribute("carreras", carreraService.findAll());
+			modelView = new ModelAndView("forms/materiasForm");
+		} else {
+			modelView = new ModelAndView("list/materias");
+			materiaService.saveMateriaDTO(materiaDTO);
+			modelView.addObject("materias", materiaService.findAll());
+		}
 		return modelView;
 	}
 	
@@ -79,13 +88,20 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarMateria(@ModelAttribute("materia") MateriaDTO materiaDTO) {
+	public String modificarMateria(@Valid @ModelAttribute("materia") MateriaDTO materiaDTO, BindingResult result, Model model) {
 		docente = docenteService.findById(materiaDTO.getDocente().getLegajo());
 		carrera = carreraService.findById(materiaDTO.getCarrera().getCodigo());
 		materiaDTO.setDocente(docente);
 		materiaDTO.setCarrera(carrera);
-		materiaService.edit(materiaDTO);
-		return "redirect:/materia/listado";
+		if (result.hasErrors()) {
+			model.addAttribute("docentes", docenteService.findAll());
+			model.addAttribute("carreras", carreraService.findAll());
+			model.addAttribute("edicion", true);
+			return "forms/materiasForm";
+		} else {
+			materiaService.edit(materiaDTO);
+			return "redirect:/materia/listado";
+		}
 	}
 	
 	@GetMapping("/eliminar/{codigo}")
