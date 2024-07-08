@@ -79,7 +79,7 @@ public class DocenteController {
 	public String eliminarDocente(@PathVariable(value = "legajo") int legajo, Model model) {
 	    if (docenteService.tieneMateriasAsignadas(legajo)) {
 	        model.addAttribute("advertencia", true);
-	        model.addAttribute("docenteConMateria", docenteService.tieneMateriasAsignadas(legajo)); 
+	        model.addAttribute("docenteConMateria", legajo); 
 	    } else {
 	        docenteService.deleteByID(legajo);
 	    }
