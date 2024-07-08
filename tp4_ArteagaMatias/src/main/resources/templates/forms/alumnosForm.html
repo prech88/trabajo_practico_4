@@ -15,7 +15,7 @@
           <form data-th-action="${edicion}?@{/alumno/modificar} : @{/alumno/guardar}" th:object="${alumno}" method="post">
             <div class="mb-3">
               <label for="dni" class="form-label">DNI</label>
-              <input type="number" class="form-control" id="dni" th:field="*{dni}" th:disabled="${edicion}?true:false" th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''" th:disabled="${dni}?true:false">
+              <input type="number" class="form-control" id="dni" th:field="*{dni}" th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''" th:disabled="${dni}?true:false">
               <p class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></p>
               <input type="hidden" class="form-control" id="dni" th:field="*{dni}" th:if="${edicion}">
             </div>
@@ -48,7 +48,7 @@
             <div class="mb-3">
               <label for="lu" class="form-label">L.U.</label>
               <input type="number" class="form-control" id="lu" th:field="*{lu}" th:classappend="${#fields.hasErrors('lu')} ? 'is-invalid' : ''" th:disabled="${lu}?true:false">
-              <p class="form-text text-danger" th:if="${#fields.hasErrors('lu')}" th:errors="*{lu}"></p>>
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('lu')}" th:errors="*{lu}"></p>
             </div>
             <button type="submit" class="btn btn-primary" th:value="${edicion}?'Modificar':'Guardar'" th:text="${edicion}?'Modificar':'Guardar'"></button>
           </form>
