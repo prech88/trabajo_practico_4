@@ -29,13 +29,7 @@ public class MateriaDTO {
     @Size(min=3, max=50, message="El nombre debe contener como mínimo 3 caracteres y como máximo 50 caracteres")
     @Pattern(regexp= "[a-z A-Z ]*", message="Debe ingresar únicamente letras")
 	private String nombre;
-	@NotBlank(message="Debe ingresar el nombre de la curso")
-    @Size(min=3, max=50, message="El nombre debe contener como mínimo 3 caracteres y como máximo 50 caracteres")
-    @Pattern(regexp= "[a-z A-Z ]*", message="Debe ingresar únicamente letras")
 	private String curso;
-	@NotNull(message="Debe ingresar la cantidad de horas")
-    @Min(value = 1, message = "La cantidad de horas debe ser al menos 1")
-    @Max(value = 127, message = "La cantidad de horas no puede ser mayor a 127")
 	private Byte cantHoras;
 	private Boolean modalidad;
 	private DocenteDto docente;

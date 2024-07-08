@@ -15,7 +15,8 @@
           <form data-th-action="${edicion}?@{/materia/modificar} : @{/materia/guardar}" th:object="${materia}" method="post">
             <div class="mb-3">
               <label for="codigoMateria" class="form-label">Código</label>
-              <input type="number" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:disabled="${edicion}?true:false">
+              <input type="number" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:disabled="${edicion}?true:false" th:classappend="${#fields.hasErrors('codigoMateria')} ? 'is-invalid' : ''">
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('codigoMateria')}" th:errors="*{codigoMateria}"></p>
               <input type="hidden" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:if="${edicion}">
             </div>
             <div class="mb-3">
@@ -25,8 +26,7 @@
             </div>
             <div class="mb-3">
               <label for="curso" class="form-label">Curso</label>
-              <input type="text" class="form-control" id="curso" th:field="*{curso}" th:classappend="${#fields.hasErrors('curso')} ? 'is-invalid' : ''">
-			  			  <p class="form-text text-danger" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></p>
+              <input type="text" class="form-control" id="curso" th:field="*{curso}">
             </div>
             <div class="mb-3">
               <label for="cantHoras" class="form-label">Cantidad de Horas</label>
