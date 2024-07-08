@@ -15,16 +15,19 @@
           <form data-th-action="${edicion}?@{/alumno/modificar} : @{/alumno/guardar}" th:object="${alumno}" method="post">
             <div class="mb-3">
               <label for="dni" class="form-label">DNI</label>
-              <input type="number" class="form-control" id="dni" th:field="*{dni}" th:disabled="${edicion}?true:false">
+              <input type="number" class="form-control" id="dni" th:field="*{dni}" th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''" th:disabled="${dni}?true:false">
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></p>
               <input type="hidden" class="form-control" id="dni" th:field="*{dni}" th:if="${edicion}">
             </div>
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+              <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
             </div>
             <div class="mb-3">
               <label for="apellido" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="apellido" th:field="*{apellido}">
+              <input type="text" class="form-control" id="apellido" th:field="*{apellido}" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''">
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></p>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">E-mail</label>
@@ -44,7 +47,8 @@
             </div>
             <div class="mb-3">
               <label for="lu" class="form-label">L.U.</label>
-              <input type="number" class="form-control" id="lu" th:field="*{lu}">
+              <input type="number" class="form-control" id="lu" th:field="*{lu}" th:classappend="${#fields.hasErrors('lu')} ? 'is-invalid' : ''" th:disabled="${lu}?true:false">
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('lu')}" th:errors="*{lu}"></p>
             </div>
             <button type="submit" class="btn btn-primary" th:value="${edicion}?'Modificar':'Guardar'" th:text="${edicion}?'Modificar':'Guardar'"></button>
           </form>
