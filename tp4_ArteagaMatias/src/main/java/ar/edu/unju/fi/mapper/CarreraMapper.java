@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
 import ar.edu.unju.fi.model.Carrera;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 @Component
@@ -16,6 +17,7 @@ public interface CarreraMapper {
 	
 	CarreraDTO toCarreraDTO(Carrera carrera);
 	
+	@Mapping(target = "materias", ignore = true)
 	@InheritInverseConfiguration
 	Carrera toCarrera(CarreraDTO carreraDTO);
 	

@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -79,5 +81,12 @@ public class AlumnoController {
 	public String eliminarAlumno(@PathVariable(value="dni")int dni) {
 		alumnoService.deleteByID(dni);
 		return "redirect:/alumno/listado";
+	}
+	
+	@GetMapping("/PorMateria/{materiaId}")
+	public String mostrarAlumnosPorMateria(@PathVariable Integer materiaId, Model model) {
+	    List<AlumnoDTO> alumnos = alumnoService.findByMateriaId(materiaId);
+	    model.addAttribute("alumnos", alumnos);
+	    return "list/alumnosPorMateria"; 
 	}
 }

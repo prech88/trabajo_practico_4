@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+
+	<div class="container principal mt-4">
+		<div class="row">
+			<div class="col-12 col-md-6 mx-auto">
+				<h2 data-th-text="${edicion}?'Modificar Docente':'Nuevo Docente'"></h2>
+				<form
+					data-th-action="${edicion}?@{/docente/modificar} : @{/docente/guardar}"
+					th:object="${docente}" method="post">
+					<div class="mb-3">
+						<label for="legajo" class="form-label">Legajo</label>
+						<input type="number" class="form-control" id="legajo" th:field="*{legajo}" th:classappend="${#fields.hasErrors('legajo')} ? 'is-invalid' : ''" th:disabled="${edicion}?true:false">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></p>
+						<input type="hidden" class="form-control" id="legajo" th:field="*{legajo}" th:if="${edicion}">
+					</div>
+					<div class="mb-3">
+						<label for="nombre" class="form-label">Nombre</label>
+						<input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+					</div>
+					<div class="mb-3">
+						<label for="apellido" class="form-label">Apellido</label>
+						<input type="text" class="form-control" id="apellido" th:field="*{apellido}" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''">
+                        <p class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></p>
+					</div>
+					<div class="mb-3">
+						<label for="telefono" class="form-label">Teléfono</label> <input
+							type="tel" class="form-control" id="telefono"
+							th:field="*{telefono}">
+					</div>
+					<button type="submit" class="btn btn-primary"
+						th:value="${edicion}?'Modificar':'Guardar'"
+						th:text="${edicion}?'Modificar':'Guardar'"></button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

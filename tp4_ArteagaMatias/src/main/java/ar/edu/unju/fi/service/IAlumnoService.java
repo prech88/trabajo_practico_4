@@ -8,6 +8,8 @@ public interface IAlumnoService {
 	
 	List<AlumnoDTO> findAll();
 	
+	List<AlumnoDTO> findByMateriaId(Integer materiaId);
+	
     AlumnoDTO findById(Integer dni);
 	
 	void saveAlumnoDTO (AlumnoDTO alumnoDTO);
@@ -15,5 +17,8 @@ public interface IAlumnoService {
 	void deleteByID(Integer dni);
 	
 	void edit(AlumnoDTO alumnoDTO);
+	
+	void inscribirAlumno(Integer alumnoId, Integer materiaId);
+	
 
 }

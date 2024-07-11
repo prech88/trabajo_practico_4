@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head data-th-replace="~{/layouts/header :: head}"></head>
+
+<body>
+	<header data-th-replace="~{/layouts/header :: header}"></header>
+
+	<div class="container principal mt-4">
+		<div class="row mb-3">
+			<div class="col-12">
+				<a class="btn btn-primary" data-th-href="@{/docente/alta}"
+					role="button">Nuevo Docente</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 mb-4" data-th-each="doc : ${docentes}">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title"
+							data-th-text="${doc.nombre} + ' ' + ${doc.apellido}"></h5>
+						<p class="card-text">
+							<strong>Legajo:</strong> <span data-th-text="${doc.legajo}"></span>
+						</p>
+						<p class="card-text">
+							<strong>Teléfono:</strong> <span data-th-text="${doc.telefono}"></span>
+						</p>
+						<a class="btn btn-warning btn-sm"
+							data-th-href="@{/docente/modificar/} + ${doc.legajo}"
+							role="button">Editar</a> <a class="btn btn-danger btn-sm"
+							data-th-href="@{/docente/eliminar/} + ${doc.legajo}"
+							role="button">Eliminar</a>
+					</div>
+					<div th:if="${advertencia}">
+						<div th:if="${docenteConMateria} == ${doc.legajo}">
+							<div class="alert alert-warning" role="alert">El docente
+								está asignado a una o más materias y no puede ser eliminado.
+								Primero debes modificar o eliminar las materias asociadas.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

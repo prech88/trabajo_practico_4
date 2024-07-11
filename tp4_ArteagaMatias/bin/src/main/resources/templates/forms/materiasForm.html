@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head data-th-replace="~{/layouts/header :: head}"></head>
+  <body>
+    <header data-th-replace="~{/layouts/header :: header}"></header>
+
+    <div class="container principal mt-4">
+      <div class="row mb-3">
+        <div class="col-12">
+          <h2 data-th-text="${edicion}?'Modificar Materia':'Nueva Materia'"></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form data-th-action="${edicion}?@{/materia/modificar} : @{/materia/guardar}" th:object="${materia}" method="post">
+            <div class="mb-3">
+              <label for="codigoMateria" class="form-label">Código</label>
+              <input type="number" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:disabled="${edicion}?true:false" th:classappend="${#fields.hasErrors('codigoMateria')} ? 'is-invalid' : ''">
+              <p class="form-text text-danger" th:if="${#fields.hasErrors('codigoMateria')}" th:errors="*{codigoMateria}"></p>
+              <input type="hidden" class="form-control" id="codigoMateria" th:field="*{codigoMateria}" th:if="${edicion}">
+            </div>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+			  <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+			  <p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+            </div>
+            <div class="mb-3">
+              <label for="curso" class="form-label">Curso</label>
+              <input type="text" class="form-control" id="curso" th:field="*{curso}">
+            </div>
+            <div class="mb-3">
+              <label for="cantHoras" class="form-label">Cantidad de Horas</label>
+              <input type="number" class="form-control" id="cantHoras" th:field="*{cantHoras}">
+            </div>
+            <div class="mb-3">
+              <label for="modalidad" class="form-label">Modalidad</label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" th:field="*{modalidad}" role="switch" id="modalidadSwitch" name="modalidadSwitch">
+                <label class="form-check-label" for="modalidadSwitch" th:text="*{modalidad} ? 'Virtual' : 'Presencial'"></label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="docente" class="form-label">Docente</label>
+              <select class="form-select" id="docente" th:field="*{docente.legajo}">
+                <option th:each="doc: ${docentes}" th:value="${doc.legajo}" th:text="${doc.nombre} + ' ' + ${doc.apellido}"></option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="carrera" class="form-label">Carrera</label>
+              <select class="form-select" id="carrera" th:field="*{carrera.codigo}">
+                <option th:each="car: ${carreras}" th:value="${car.codigo}" th:text="${car.nombre}"></option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" th:value="${edicion}?'Modificar':'Guardar'" th:text="${edicion}?'Modificar':'Guardar'"></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  </body>
+</html>

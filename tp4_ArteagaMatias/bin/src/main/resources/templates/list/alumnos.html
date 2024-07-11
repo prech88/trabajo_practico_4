@@ -26,7 +26,14 @@
                                 <p class="card-text"><strong>Email:</strong> <span data-th-text="${alu.email}"></span></p>
                                 <p class="card-text"><strong>Teléfono:</strong> <span data-th-text="${alu.telefono}"></span></p>
                                 <p><strong>L.U.:</strong> <span data-th-text="${alu.lu}"></span></p>
-								<a class="btn btn-success mt-2" data-th-href="@{/inscripcion/form(alumnoId=${alu.dni})}">Inscribir a Materia</a>
+                                <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#detallesAlumno${stat.index}">
+                                    Mostrar más <i class="bi bi-chevron-down"></i>
+                                </button>
+                                <div class="collapse" id="detallesAlumno${stat.index}">
+                                    <p><strong>Fecha de Nacimiento:</strong> <span data-th-text="${alu.fechaNac}"></span></p>
+                                    <p><strong>Domicilio:</strong> <span data-th-text="${alu.domicilio}"></span></p>
+                                </div>
+                                <a class="btn btn-success mt-2" data-th-href="@{/inscripcion/form(alumnoId=${alu.dni})}">Inscribir a Materia</a>
                             </div>
                         </div>
                     </div>
@@ -40,3 +47,5 @@
 </body>
 
 </html>
+
+
