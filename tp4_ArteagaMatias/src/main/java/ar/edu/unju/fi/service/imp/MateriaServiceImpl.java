@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,21 @@ public class MateriaServiceImpl implements IMateriaService{
 		List<MateriaDTO> materiasDTO = materiaMapper.toMateriasDTO(materias);
 		return materiasDTO;
 	}
+	
+	@Override
+	public List<MateriaDTO> findByCarreraId(Integer codigoCarrera) {
+	    List<Materia> materias = materiaRepository.findAll();
+	    List<MateriaDTO> materiasDTO = new ArrayList<>();
+
+	    for (Materia materia : materias) {
+	        if (materia.getCarrera().getCodigo().equals(codigoCarrera)) {
+	            materiasDTO.add(materiaMapper.toMateriaDTO(materia));
+	        }
+	    }
+
+	    return materiasDTO;
+	}
+
 
 	@Override
 	public MateriaDTO findById(Integer codigo) {

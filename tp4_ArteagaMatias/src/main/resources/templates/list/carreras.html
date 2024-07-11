@@ -4,41 +4,38 @@
 <head data-th-replace="~{/layouts/header :: head}"></head>
 
 <body>
-	<header data-th-replace="~{/layouts/header :: header}"></header>
+    <header data-th-replace="~{/layouts/header :: header}"></header>
 
-	<div class="container principal mt-4">
-		<div class="row mb-3">
-			<div class="col-12">
-				<a class="btn btn-primary" data-th-href="@{/carrera/alta}" role="button">Nueva Carrera</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="row">
-					<div class="col-md-3 mb-4" data-th-each="car : ${carreras}">
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title" data-th-text="${car.nombre}"></h5>
-								<p class="card-text"><strong>Código:</strong> <span data-th-text="${car.codigo}"></span>
-								</p>
-								<p class="card-text"><strong>Duración:</strong> <span
-										data-th-text="${car.cantAnios} + ' años'"></span></p>
-								<p class="card-text"><strong>Estado:</strong> <span th:if="${car.estado}">Activa</span>
-									<span th:if="${!car.estado}">Inactiva</span></p>
-								<a class="btn btn-warning btn-sm" data-th-href="@{/carrera/modificar/} + ${car.codigo}"
-									role="button">Editar</a>
-								<a class="btn btn-danger btn-sm" data-th-href="@{/carrera/eliminar/} + ${car.codigo}"
-									role="button">Eliminar</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container principal mt-4">
+        <div class="row mb-3">
+            <div class="col-12">
+                <a class="btn btn-primary" data-th-href="@{/carrera/alta}" role="button">Nueva Carrera</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-3 mb-4" data-th-each="car : ${carreras}">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title" data-th-text="${car.nombre}"></h5>
+                                <p class="card-text"><strong>Código:</strong> <span data-th-text="${car.codigo}"></span></p>
+                                <p class="card-text"><strong>Duración:</strong> <span data-th-text="${car.cantAnios} + ' años'"></span></p>
+                                <p class="card-text"><strong>Estado:</strong> <span th:if="${car.estado}">Activa</span>
+                                    <span th:if="${!car.estado}">Inactiva</span></p>
+                                <a class="btn btn-warning btn-sm" data-th-href="@{/carrera/modificar/} + ${car.codigo}" role="button">Editar</a>
+                                <a class="btn btn-danger btn-sm" data-th-href="@{/carrera/eliminar/} + ${car.codigo}" role="button">Eliminar</a>
+								<a class="btn btn-info btn-sm mt-2" th:href="@{/carrera/{codigo}/alumnos(codigo=${car.codigo})}" role="button">Ver Inscriptos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 
 </html>

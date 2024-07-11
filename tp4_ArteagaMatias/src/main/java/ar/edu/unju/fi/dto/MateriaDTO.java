@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.dto;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import jakarta.validation.constraints.Max;
@@ -34,4 +36,5 @@ public class MateriaDTO {
 	private Boolean modalidad;
 	private DocenteDto docente;
 	private CarreraDTO carrera;
+	private List<AlumnoDTO> alumnos;
 }
