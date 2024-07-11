@@ -3,6 +3,7 @@ package ar.edu.unju.fi.model;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -44,7 +45,7 @@ public class Materia {
 	@OneToOne
 	@JoinColumn(name = "legajo")
 	private Docente docente;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo")
 	private Carrera carrera;
 }

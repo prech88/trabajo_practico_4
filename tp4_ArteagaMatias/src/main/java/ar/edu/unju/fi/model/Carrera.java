@@ -42,6 +42,6 @@ public class Carrera {
     @Max(value = 7, message = "La cantidad de años no puede ser mayor a 7")
 	private Byte cantAnios;
 	private Boolean estado;
-	@OneToMany(mappedBy = "carrera", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Materia> materias;
 }
