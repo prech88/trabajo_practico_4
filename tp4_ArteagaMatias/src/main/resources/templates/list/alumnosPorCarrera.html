@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}"></head>
+<body>
+    <header data-th-replace="~{/layouts/header :: header}"></header>
+
+    <div class="container mt-4">
+        <h1 class="mb-4" th:text="${carrera.nombre} + ' - Alumnos inscritos'"></h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" data-th-each="materia : ${materias}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" data-th-text="${materia.nombre}"></h5>
+                        <p class="card-text"><strong>Código de materia:</strong> <span data-th-text="${materia.codigoMateria}"></span></p>
+                        <hr>
+                        <div data-th-each="alu : ${materia.alumnos}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2 text-muted" data-th-text="${alu.nombre} + ' ' + ${alu.apellido}"></h6>
+                                    <p class="card-text"><strong>DNI:</strong> <span data-th-text="${alu.dni}"></span></p>
+                                    <p class="card-text"><strong>Email:</strong> <span data-th-text="${alu.email}"></span></p>
+                                    <p class="card-text"><strong>Teléfono:</strong> <span data-th-text="${alu.telefono}"></span></p>
+                                    <p><strong>L.U.:</strong> <span data-th-text="${alu.lu}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
+
+

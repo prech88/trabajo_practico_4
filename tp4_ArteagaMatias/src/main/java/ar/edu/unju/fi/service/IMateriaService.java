@@ -7,6 +7,8 @@ import ar.edu.unju.fi.dto.MateriaDTO;
 public interface IMateriaService {
 	
 	List<MateriaDTO> findAll();
+	 
+	List<MateriaDTO> findByCarreraId(Integer codigoCarrera);
 	
 	MateriaDTO findById(Integer codigo);
 	
