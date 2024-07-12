@@ -20,5 +20,6 @@ public interface IAlumnoService {
 	
 	void inscribirAlumno(Integer alumnoId, Integer materiaId);
 	
+	void removerAlumnosDeMaterias(Integer materiaId);	
 
 }

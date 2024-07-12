@@ -27,6 +27,8 @@
                                 <p class="card-text"><strong>Teléfono:</strong> <span data-th-text="${alu.telefono}"></span></p>
                                 <p><strong>L.U.:</strong> <span data-th-text="${alu.lu}"></span></p>
 								<a class="btn btn-success mt-2" data-th-href="@{/inscripcion/form(alumnoId=${alu.dni})}">Inscribir a Materia</a>
+								<a class="btn btn-warning btn-sm" data-th-href="@{/alumno/modificar/} + ${alu.dni}" role="button">Editar</a>
+                                <a class="btn btn-danger btn-sm" data-th-href="@{/alumno/eliminar/} + ${alu.dni}" role="button">Eliminar</a>
                             </div>
                         </div>
                     </div>

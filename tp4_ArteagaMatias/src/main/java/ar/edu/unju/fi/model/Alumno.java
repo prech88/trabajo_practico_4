@@ -1,8 +1,7 @@
 package ar.edu.unju.fi.model;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -45,5 +44,5 @@ public class Alumno {
         joinColumns = @JoinColumn(name = "alumno_id"),
         inverseJoinColumns = @JoinColumn(name = "materia_id")
     )
-    private Set<Materia> materias = new HashSet<>();
+    private List<Materia> materias;
 }
