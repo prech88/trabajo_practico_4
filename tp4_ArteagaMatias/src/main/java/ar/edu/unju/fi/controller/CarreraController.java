@@ -91,6 +91,11 @@ public class CarreraController {
 
 	@GetMapping("/eliminar/{codigo}")
 	public String eliminarCarrera(@PathVariable(value = "codigo") int codigo) {
+		List<MateriaDTO> materias = materiaService.findByCarreraId(codigo);
+		for (MateriaDTO materiaDTO : materias) {
+			alumnoService.removerAlumnosDeMaterias(materiaDTO.getCodigoMateria());
+		}
+		materiaService.eliminarMateriasDeCarrera(codigo);
 		carreraService.deleteByID(codigo);
 		return "redirect:/carrera/listado";
 	}
@@ -98,7 +103,7 @@ public class CarreraController {
 	@GetMapping("/{codigo}/alumnos")
 	public String getAlumnosByCarrera(@PathVariable("codigo") Integer codigo, Model model) {
 		CarreraDTO carrera = carreraService.findById(codigo);
-		List<MateriaDTO> materias = materiaService.findByCarreraId(codigo); // Filtrar por código de carrera
+		List<MateriaDTO> materias = materiaService.findByCarreraId(codigo);
 
 		for (MateriaDTO materia : materias) {
 			List<AlumnoDTO> alumnos = alumnoService.findByMateriaId(materia.getCodigoMateria());

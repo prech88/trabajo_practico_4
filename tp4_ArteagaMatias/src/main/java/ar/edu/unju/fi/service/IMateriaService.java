@@ -18,4 +18,6 @@ public interface IMateriaService {
 	
 	void edit(MateriaDTO materiaDTO);
 	
+	public void eliminarMateriasDeCarrera(Integer carreraCodigo);
+	
 }

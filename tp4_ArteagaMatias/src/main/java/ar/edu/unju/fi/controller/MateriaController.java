@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.dto.CarreraDTO;
 import ar.edu.unju.fi.dto.DocenteDto;
 import ar.edu.unju.fi.dto.MateriaDTO;
+import ar.edu.unju.fi.service.IAlumnoService;
 import ar.edu.unju.fi.service.ICarreraService;
 import ar.edu.unju.fi.service.IDocenteService;
 import ar.edu.unju.fi.service.IMateriaService;
@@ -36,6 +37,8 @@ public class MateriaController {
 	private IDocenteService docenteService;
 	@Autowired
 	private ICarreraService carreraService;
+	@Autowired
+	private IAlumnoService alumnoService;
 	
 	@GetMapping("/listado")
 	public String getMateriaPage(Model model) {
@@ -106,6 +109,7 @@ public class MateriaController {
 	
 	@GetMapping("/eliminar/{codigo}")
 	public String eliminarMateria(@PathVariable(value="codigo")int codigo) {
+		alumnoService.removerAlumnosDeMaterias(codigo);
 		materiaService.deleteByID(codigo);
 		return "redirect:/materia/listado";
 	}

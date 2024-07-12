@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -92,5 +93,21 @@ public class AlumnoServiceImpl implements IAlumnoService{
                 .map(alumnoMapper::toAlumnoDTO)
                 .collect(Collectors.toList());
     }
+
+	 @Override
+	 public void removerAlumnosDeMaterias(Integer materiaId) {
+		    Optional<Materia> materiaOptional = materiaRepository.findById(materiaId);
+		    if (materiaOptional.isPresent()) {
+		        Materia materiaAEliminar = materiaOptional.get();
+		        List<Alumno> alumnos = alumnoRepository.findAll();
+		        for (Alumno alumno : alumnos) {
+		            List<Materia> materiasActuales = new ArrayList<>(alumno.getMaterias());
+		            materiasActuales.remove(materiaAEliminar);
+		            alumno.setMaterias(materiasActuales);
+		            alumnoRepository.save(alumno);
+		        }
+		    } else {
+		    }
+	 }
 	
 }
