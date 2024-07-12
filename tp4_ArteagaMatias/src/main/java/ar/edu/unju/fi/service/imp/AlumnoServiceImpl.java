@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ import ar.edu.unju.fi.service.IAlumnoService;
 @Service
 public class AlumnoServiceImpl implements IAlumnoService{
 	
+	private static final Log LOGGER = LogFactory.getLog(AlumnoServiceImpl.class);
+	
 	@Autowired
 	private AlumnoMapper alumnoMapper;
 	
@@ -32,12 +36,18 @@ public class AlumnoServiceImpl implements IAlumnoService{
 	public List<AlumnoDTO> findAll() {
 		List<Alumno> alumnos = alumnoRepository.findAll();
 		List<AlumnoDTO> alumnosDTO = alumnoMapper.toAlumnoDTOList(alumnos);
+		LOGGER.info("Se solicita el listado de alumnos de la lista: " + alumnos.size());
 		return alumnosDTO;
 	}
 
 	@Override
 	public AlumnoDTO findById(Integer dni) {
 		Optional<Alumno> alumnoBuscado = alumnoRepository.findById(dni);
+		if (alumnoBuscado.isEmpty()) {
+			LOGGER.error("No se ha encontrado un alumno en la base de datos");
+		}else {
+			LOGGER.info("Se ha encontrado alumno con el dni: " + dni);;
+		}
 		return alumnoBuscado.map(alumnoMapper::toAlumnoDTO).orElse(null);
 	}
 
@@ -45,17 +55,20 @@ public class AlumnoServiceImpl implements IAlumnoService{
 	public void saveAlumnoDTO(AlumnoDTO alumnoDTO) {
 		Alumno alumno = alumnoMapper.toAlumno(alumnoDTO);
 		alumnoRepository.save(alumno);
+		LOGGER.info("Se guarda exitosamente el nuevo alumno");
 	}
 
 	@Override
 	public void deleteByID(Integer dni) {
 		alumnoRepository.deleteById(dni);
+		LOGGER.info("Se ha eliminado un alumno con el dni: " + dni);
 	}
 
 	@Override
 	public void edit(AlumnoDTO alumnoDTO) {
 		Alumno alumno = alumnoMapper.toAlumno(alumnoDTO);
 		alumnoRepository.save(alumno);
+		LOGGER.info("Se modifica el alumno con el dni nuemero: " + alumno.getDni());
 	}
 
 	@Override
