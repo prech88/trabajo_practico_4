@@ -42,6 +42,12 @@ public class InscripcionController {
 
     @PostMapping("/inscripcion")
     public String inscribirAlumno(@RequestParam("alumnoId") Integer alumnoId, @RequestParam("materiaId") Integer materiaId, Model model) {
+        List<MateriaDTO> materias = materiaService.findAll();
+        if (materias.isEmpty()) {
+            model.addAttribute("error", "No hay materias disponibles para inscripción.");
+            return "forms/inscripcionForm";
+        }
+
         try {
             alumnoService.inscribirAlumno(alumnoId, materiaId);
             model.addAttribute("message", "Inscripción realizada con éxito");
@@ -50,4 +56,5 @@ public class InscripcionController {
         }
         return "redirect:/inscripcion";
     }
+
 }
