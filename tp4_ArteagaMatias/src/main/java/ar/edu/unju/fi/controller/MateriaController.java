@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,6 +52,13 @@ public class MateriaController {
 	@GetMapping("/alta")
 	public String getMateriaAltaPage(Model model) {
 		boolean edicion = false;
+		List<DocenteDto> docentes = docenteService.findAll();
+	    List<CarreraDTO> carreras = carreraService.findAll();
+		if (docentes.isEmpty() || carreras.isEmpty()) {
+	        model.addAttribute("error", true);
+	    } else {
+	        model.addAttribute("error", false);
+	    }
 		model.addAttribute("titulo", "Nueva Materia");
 		model.addAttribute("materia", materia);
 		model.addAttribute("edicion", edicion);
