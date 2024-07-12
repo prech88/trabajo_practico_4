@@ -1,12 +1,10 @@
 package ar.edu.unju.fi.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-import ar.edu.unju.fi.dto.AlumnoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
