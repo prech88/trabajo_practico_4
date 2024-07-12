@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,7 +38,6 @@ public class Alumno {
     private LocalDate fechaNac;
     private String domicilio;
     private Integer lu;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "alumno_materia",
@@ -45,4 +45,7 @@ public class Alumno {
         inverseJoinColumns = @JoinColumn(name = "materia_id")
     )
     private List<Materia> materias;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codigo")
+	private Carrera carrera;
 }

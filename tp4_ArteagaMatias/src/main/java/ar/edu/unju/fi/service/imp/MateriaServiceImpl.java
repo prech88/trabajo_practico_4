@@ -3,6 +3,7 @@ package ar.edu.unju.fi.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,16 @@ public class MateriaServiceImpl implements IMateriaService{
 	public void edit(MateriaDTO materiaDTO) {
 		Materia materia = materiaMapper.toMateria(materiaDTO);
 		materiaRepository.save(materia);
+	}
+	
+	public void eliminarMateriasDeCarrera(Integer carreraCodigo) {
+	    List<Materia> materias = materiaRepository.findAll();
+	    List<Materia> materiasDeCarrera = materias.stream()
+	        .filter(materia -> materia.getCarrera() != null && materia.getCarrera().getCodigo().equals(carreraCodigo))
+	        .collect(Collectors.toList());
+	    for (Materia materia : materiasDeCarrera) {
+	        materiaRepository.delete(materia);
+	    }
 	}
 
 }

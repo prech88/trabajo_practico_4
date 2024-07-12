@@ -32,4 +32,6 @@ public class Carrera {
 	private Boolean estado;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Materia> materias;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Alumno> alumnos;
 }

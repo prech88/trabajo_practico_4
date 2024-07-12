@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.collections;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,9 +16,6 @@ public class CollectionAlumno {
 	private static List<Alumno> alumnos = new ArrayList<Alumno>();
 	
 	public static void cargarAlumnos(List<Alumno> alumnos) {
-		alumnos.add(new Alumno(35246891, "Pedro", "Juarez", "pedr56@gmail.com", (long)388424035, LocalDate.of(1995, 6, 15), "Calle Barrientos 123", 3245, null));
-		alumnos.add(new Alumno(36254982, "Pepe", "Ibañez", "pepe32@gmail.com", (long)388457469, LocalDate.of(1995, 7, 26), "Calle Coronel Arias 321", 2654, null));
-		alumnos.add(new Alumno(37324951, "Oracio", "Castellon", "ora54@gmail.com", (long)388485429, LocalDate.of(1995, 8, 30), "Calle Los Lapachos 456", 4123, null));
 	}
 	
 	public static List<Alumno> getAlumnos() {
